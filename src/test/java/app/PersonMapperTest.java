@@ -6,7 +6,10 @@ import app.model.Person;
 import app.model.PersonDTO;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -17,7 +20,11 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PersonMapperTest extends ApplicationTest {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class PersonMapperTest {
+
+    private PersonMapper personMapper;
 
     private Person person_hightop;
     private Person person_laydown;
@@ -25,8 +32,6 @@ public class PersonMapperTest extends ApplicationTest {
 
     private PersonDTO person_hightop_mapped;
     private Person person_hightop_remapped;
-
-    private PersonMapper personMapper;
 
     @Autowired
     public void setPersonMapper(PersonMapper personMapper) {

@@ -1,12 +1,20 @@
 package app;
 
+import app.model.Person;
 import app.repository.PersonRepository;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@RunWith(SpringRunner.class)
 @DataJpaTest
-public class PersonRepositoryTest extends ApplicationTest {
+public class PersonRepositoryTest {
 
     private PersonRepository personRepository;
 
@@ -18,7 +26,8 @@ public class PersonRepositoryTest extends ApplicationTest {
     @Test
     public void testFindByFullName() {
 
-        personRepository.findByFullName("aa");
+        Optional<Person> result = personRepository.findByFullName("Hightop Straw");
+        assertThat(result.isPresent()).isTrue();
 
     }
 
