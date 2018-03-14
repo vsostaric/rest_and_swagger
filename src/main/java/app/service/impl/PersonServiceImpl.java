@@ -32,7 +32,11 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<Person> getPersons(int page, int size) {
-        final Pageable pageable = PageRequest.of(page, size);
-        return personRepository.findAll(pageable).getContent();
+        return personRepository.findAll(PageRequest.of(page, size)).getContent();
+    }
+
+    @Override
+    public Person savePerson(Person person) {
+        return personRepository.save(person);
     }
 }

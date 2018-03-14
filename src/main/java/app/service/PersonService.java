@@ -11,4 +11,6 @@ public interface PersonService {
 
     List<Person> getPersons(int page, int size);
 
+    Person savePerson(final Person person);
+
 }

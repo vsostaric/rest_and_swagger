@@ -28,7 +28,8 @@
         <createSequence
                 incrementBy="1"
                 sequenceName="person_seq"
-                startValue="10"/>
+                startValue="10"
+        />
     </changeSet>
 
     <changeSet id="3" author="vsostaric" dbms="h2">

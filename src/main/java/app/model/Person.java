@@ -14,11 +14,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@SequenceGenerator(name = "person_seq", sequenceName = "person_seq")
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq")
+    @SequenceGenerator(name = "person_id_seq", sequenceName = "person_seq", initialValue = 20)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_id_seq")
     private Integer id;
 
     @Column(name = "full_name")
@@ -40,3 +40,4 @@ public class Person {
     private Car car;
 
 }
+
