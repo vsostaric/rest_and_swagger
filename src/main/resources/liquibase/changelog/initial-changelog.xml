@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="vsostaric" dbms="h2">
+        <createTable tableName="person">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="full_name" type="varchar(150)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(150)">
+            </column>
+            <column name="date_of_birth" type="date" valueDate="YYYY-MM-DD">
+            </column>
+            <column name="number_of_visits" type="int">
+            </column>
+            <column name="money_on_his_mind" type="number(14,2)">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="vsostaric" dbms="h2">
+        <createSequence
+                incrementBy="1"
+                sequenceName="person_seq"
+                startValue="10"/>
+    </changeSet>
+
+    <changeSet id="3" author="vsostaric" dbms="h2">
+        <insert tableName="person">
+            <column name="id" valueComputed="person_seq.nextval"/>
+            <column name="full_name" value="Hightop Straw"/>
+            <column name="address" value="Pennbroke 82"/>
+            <column name="date_of_birth" value="1989-10-13"/>
+            <column name="number_of_visits" value="7"/>
+            <column name="money_on_his_mind" value="1021.44"/>
+        </insert>
+        <insert tableName="person">
+            <column name="id" valueComputed="person_seq.nextval"/>
+            <column name="full_name" value="Laydown Relax"/>
+            <column name="address" value="Wullford Road 23"/>
+            <column name="date_of_birth" value="1988-5-8"/>
+            <column name="number_of_visits" value="23"/>
+        </insert>
+        <insert tableName="person">
+            <column name="id" valueComputed="person_seq.nextval"/>
+            <column name="full_name" value="Run Vigorously"/>
+            <column name="address" value="Someville 7"/>
+            <column name="date_of_birth" value="1961-1-24"/>
+            <column name="number_of_visits" value="115"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
