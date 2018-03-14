@@ -40,14 +40,7 @@ public class PersonMapperTest {
 
     @Before
     public void init() {
-        person_hightop = Person.builder()
-                .fullName("Hightop Straw")
-                .address("Pennbroke 82")
-                .dateOfBirth(LocalDate.of(1989, 10, 13))
-                .numberOfVisits(7)
-                .moneyOnHisMind(new BigDecimal("1021.44"))
-                .car(Car.builder().carModel("Renault Laguna").build())
-                .build();
+        person_hightop = PersonTest.getTestPerson();
 
         person_laydown = Person.builder()
                 .fullName("Laydown Relax")

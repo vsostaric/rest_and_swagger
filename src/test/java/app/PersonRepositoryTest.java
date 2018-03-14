@@ -31,4 +31,18 @@ public class PersonRepositoryTest {
 
     }
 
+    @Test
+    public void testInsertPerson() {
+
+        final String testName = "Test name";
+        assertThat(personRepository.findByFullName(testName).isPresent()).isFalse();
+
+        final Person person = PersonTest.getTestPerson();
+        person.setFullName(testName);
+        personRepository.save(person);
+
+        assertThat(personRepository.findByFullName(testName).isPresent()).isTrue();
+
+    }
+
 }
