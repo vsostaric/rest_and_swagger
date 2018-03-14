@@ -2,8 +2,13 @@ package app.service;
 
 import app.model.Person;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface PersonService {
 
-    Person getRandomPerson();
+    Optional<Person> getPersonByFullName(final String fullName);
+
+    List<Person> getPersons(int page, int size);
 
 }

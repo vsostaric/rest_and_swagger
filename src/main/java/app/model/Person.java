@@ -20,7 +20,7 @@ import java.time.LocalDate;
 public class Person {
 
     @Id
-    private int id;
+    private Integer id;
 
     @Column(name = "full_name")
     private String fullName;

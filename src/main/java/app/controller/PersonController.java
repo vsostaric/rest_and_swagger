@@ -2,10 +2,10 @@ package app.controller;
 
 import app.mapper.PersonMapper;
 import app.model.Person;
-import app.model.PersonDTO;
 import app.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -22,15 +22,9 @@ public class PersonController {
         this.personMapper = personMapper;
     }
 
-    @GetMapping("/getPerson")
-    public Person getPerson() {
-        return personService.getRandomPerson();
-    }
-
-
-    @GetMapping("/getPersonDTO")
-    public PersonDTO getPersonDTO() {
-        return personMapper.personToPersonDTO(personService.getRandomPerson());
+    @GetMapping("/getPersonByFullName/{fullName}")
+    public Person getPerson(final @PathVariable("fullName") String fullName) {
+        return personService.getPersonByFullName(fullName).orElseThrow(() -> new RuntimeException("Person not found with name: " + fullName));
     }
 
 }

@@ -1,16 +1,12 @@
-package mapper;
+package app;
 
-import app.Application;
 import app.mapper.PersonMapper;
 import app.model.Car;
 import app.model.Person;
 import app.model.PersonDTO;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -21,9 +17,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
-public class PersonMapperTest {
+public class PersonMapperTest extends ApplicationTest {
 
     private Person person_hightop;
     private Person person_laydown;
