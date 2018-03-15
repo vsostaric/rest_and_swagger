@@ -41,7 +41,6 @@ public class PersonRepositoryTest {
         person.setFullName(testName);
         personRepository.save(person);
 
-
         assertThat(personRepository.findByFullName(testName).isPresent()).isTrue();
 
     }
