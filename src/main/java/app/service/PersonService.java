@@ -13,4 +13,6 @@ public interface PersonService {
 
     Person savePerson(final Person person);
 
+    Long removePerson(final String fullName);
+
 }

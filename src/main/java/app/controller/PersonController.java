@@ -30,4 +30,8 @@ public class PersonController {
         return ResponseEntity.ok(personService.savePerson(person));
     }
 
+    @PostMapping(path = "/removePerson", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<Long> removePerson(final Person person) {
+        return ResponseEntity.ok(personService.removePerson(person.getFullName()));
+    }
 }

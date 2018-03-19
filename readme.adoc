@@ -6,4 +6,4 @@ The purpose is to create an environment to investigate Swagger.
 Everything else exists just to create a rest api or anything else which might be useful for this end.
 
 == Swagger
-When the application starts you can see Swagger UI at http://localhost:8080/restAndSwagger/swagger-ui.html.
+When the application starts you can see Swagger UI at http://localhost:8090/restAndSwagger/swagger-ui.html.

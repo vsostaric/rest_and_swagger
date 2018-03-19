@@ -9,4 +9,6 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
 
     Optional<Person> findByFullName(final String fullName);
 
+    long deleteByFullName(final String fullName);
+
 }

@@ -17,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PersonRepositoryTest {
 
     private PersonRepository personRepository;
+    public static final String TEST_NAME = "Test name";
 
     @Autowired
     public void setPersonRepository(PersonRepository personRepository) {
@@ -34,15 +35,37 @@ public class PersonRepositoryTest {
     @Test
     public void testInsertPerson() {
 
-        final String testName = "Test name";
-        assertThat(personRepository.findByFullName(testName).isPresent()).isFalse();
+        assertThat(personRepository.findByFullName(TEST_NAME).isPresent()).isFalse();
+        final Person person = saveTestPerson();
 
+        assertThat(personRepository.findByFullName(TEST_NAME).isPresent()).isTrue();
+
+        personRepository.delete(person);
+        assertThat(personRepository.findByFullName(TEST_NAME).isPresent()).isFalse();
+
+    }
+
+    @Test
+    public void testRemovePersonByName() {
+
+        assertThat(personRepository.findByFullName(TEST_NAME).isPresent()).isFalse();
+        final Person person = saveTestPerson();
+
+        assertThat(personRepository.findByFullName(TEST_NAME).isPresent()).isTrue();
+
+        long deleted = personRepository.deleteByFullName(person.getFullName());
+
+        assertThat(deleted).isEqualTo(1);
+        assertThat(personRepository.findByFullName(TEST_NAME).isPresent()).isFalse();
+
+    }
+
+    private Person saveTestPerson() {
         final Person person = PersonTest.getTestPerson();
-        person.setFullName(testName);
+        person.setFullName(TEST_NAME);
+
         personRepository.save(person);
-
-        assertThat(personRepository.findByFullName(testName).isPresent()).isTrue();
-
+        return person;
     }
 
 }
