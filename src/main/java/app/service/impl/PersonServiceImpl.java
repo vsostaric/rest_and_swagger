@@ -21,10 +21,6 @@ public class PersonServiceImpl implements PersonService {
         this.personRepository = personRepository;
     }
 
-    public Optional<Person> getPerson(Integer id) {
-        return personRepository.findById(id);
-    }
-
     @Override
     public Optional<Person> getPersonByFullName(String fullName) {
         return personRepository.findByFullName(fullName);
