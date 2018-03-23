@@ -17,8 +17,8 @@ import java.time.LocalDate;
 public class Person {
 
     @Id
-    @SequenceGenerator(name = "person_id_seq", sequenceName = "person_seq", initialValue = 20)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_id_seq")
+    @SequenceGenerator(name = "person_id_seq", sequenceName = "person_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "full_name")
